@@ -7,6 +7,10 @@ import wx
 # begin wxGlade: extracode
 # end wxGlade
 
+abc = u"АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ01234567890,.!?\\\":-_Z"
+str_sample = u"ДУФДХФШФТДШЁТДЭШФГШФДЧСЩЭПСФЧ2-ДУПРШФДУЛДОУЁЛШДШФЭУФ-ДЭШФ-ДЁ"
+result_sample = u'ЗЧШЗЩШЬШЦЗЬКЦЗ1ЬШЖЬШЗЫХЭ1УХШЫ6БЗЧУФЬШЗЧПЗТЧКПЬЗЬШ1ЧШБЗ1ЬШБЗК'
+
 def shift (string, dict_string, push_length):
  ans = u''
  for string_l in string:
@@ -29,9 +33,9 @@ class MyFrame(wx.Frame):
         # begin wxGlade: MyFrame.__init__
         kwds["style"] = wx.DEFAULT_FRAME_STYLE
         wx.Frame.__init__(self, *args, **kwds)
-        self.text_ctrl_str = wx.TextCtrl(self, -1, u"ДУФДХФШФТДШЁТДЭШФГШФДЧСЩЭПСФЧ2-ДУПРШФДУЛДОУЁЛШДШФЭУФ-ДЭШФ-ДЁ", style=wx.TE_MULTILINE)
-        self.slider_1 = wx.Slider(self, -1, 4, 0, 100, style=wx.SL_HORIZONTAL|wx.SL_LABELS)
-        self.text_ctrl_result = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE|wx.TE_READONLY)
+        self.text_ctrl_str = wx.TextCtrl(self, -1, str_sample, style=wx.TE_MULTILINE)
+        self.slider_1 = wx.Slider(self, -1, 4, 1, len(abc), style=wx.SL_HORIZONTAL|wx.SL_LABELS)
+        self.text_ctrl_result = wx.TextCtrl(self, -1, result_sample, style=wx.TE_MULTILINE|wx.TE_READONLY)
 
         self.__set_properties()
         self.__do_layout()
@@ -62,7 +66,7 @@ class MyFrame(wx.Frame):
         # end wxGlade
 
     def scroll(self, event): # wxGlade: MyFrame.<event_handler>
-        self.text_ctrl_result.SetValue(shift (self.text_ctrl_str.GetValue(), u"АБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ01234567890,.!?\\\":-_Z", int(self.slider_1.GetValue())))
+        self.text_ctrl_result.SetValue(shift (self.text_ctrl_str.GetValue(), abc, int(self.slider_1.GetValue())))
 
 # end of class MyFrame
 
